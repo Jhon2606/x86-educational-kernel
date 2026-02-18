@@ -1,7 +1,7 @@
 [BITS 32]
 start:
     mov esp, _sys_stack
-    jump stublet
+    jmp stublet
 
     ALIGN 4
     mboot:
@@ -14,4 +14,20 @@ start:
     MULTIBOOT_CHECKSUM equ -(MULTIBOOT_HEADER_MAGIC + MULTIBOOT_HEADER_FLAGS)
     EXTERN code, bss, end
     
+    dd MULTIBOOT_HEADER_MAGIC
+    dd MULTIBOOT_HEADER_FLAGS
+    dd MULTIBOOT_CHECKSUM
+
+    dd mboot
+    dd code
+    dd bss
+    dd end
+    dd start
     stublet:
+        jmp $
+
+        ;codigo gdt aqui futuramente...
+
+    SECTION .bss
+        resb 8192
+    _sys_stack:
