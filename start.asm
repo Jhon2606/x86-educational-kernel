@@ -1,4 +1,5 @@
 [BITS 32]
+GLOBAL start ;tentativa externa ao tutotial de corrigir o erro do linker
 start:
     mov esp, _sys_stack
     jmp stublet
