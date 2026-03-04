@@ -25,6 +25,8 @@ start:
     dd end
     dd start
     stublet:
+    extern main
+    call main
         jmp $
 
         ;codigo gdt aqui futuramente...
