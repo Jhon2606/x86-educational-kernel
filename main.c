@@ -58,5 +58,9 @@ void outportb(unsigned short _port, unsigned char _data) {
 }
 
 void kmain(){
+    init_video();
+    puts((unsigned char *)"Ola Mundo!\n");
+    puts((unsigned char *)"Se voce esta vendo isso vc sabe o basico\n");
+    puts((unsigned char *)"E tambem sabe que nao e trivial escrever em uma tela ;-;");
     for(;;);
 }
