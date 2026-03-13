@@ -29,7 +29,20 @@ start:
     call kmain
         jmp $
 
-        ;codigo gdt aqui futuramente...
+        ;GDT flush
+
+        global gdt_flush
+        extern gp
+        gdt_flush:
+            lgdt [gp]     ; Carrega GDT com nosso ponteiro especial '_gp'
+            mov ax, 0x10  ; 0x10 é o offset na GDT para nosso segmento de dados
+            mov ds, ax
+            mov es, ax
+            mov fs, ax
+            mov gs, ax
+                jmp 0x08:flush2 ;0x08 é offset para nosso codigo: salto longo
+        flush2:
+            ret ;retorna para o codigo em c
 
     SECTION .bss
         resb 8192

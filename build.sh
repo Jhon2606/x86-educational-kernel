@@ -10,8 +10,14 @@ echo main pronta...
 gcc -Wall -O -fstrength-reduce -fomit-frame-pointer \
     -finline-functions -nostdinc -fno-builtin -fno-pie \
     -I./include -c -m32 -o scrn.o scrn.c
-echo Juntando kernel...
+echo scrn pronta...
+
+gcc -Wall -O -fstrength-reduce -fomit-frame-pointer \
+    -finline-functions -nostdinc -fno-builtin -fno-pie \
+    -I./include -c -m32 -o gdt.o gdt.c
+echo gdt pronta...
+echo Juntando Kernel...
 
 
-ld -m elf_i386 -T link.ld -o kernel.bin start.o main.o scrn.o
+ld -m elf_i386 -T link.ld -o kernel.bin start.o main.o scrn.o gdt.o
 echo Feito!
