@@ -59,6 +59,7 @@ void outportb(unsigned short _port, unsigned char _data) {
 
 void kmain(){
     gdt_install();
+    idt_install();
     init_video();
     puts((unsigned char *)"Ola Mundo!\n");
     puts((unsigned char *)"Se voce esta vendo isso vc sabe o basico\n");

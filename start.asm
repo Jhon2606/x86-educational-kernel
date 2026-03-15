@@ -44,6 +44,13 @@ start:
         flush2:
             ret ;retorna para o codigo em c
 
+            global idt_load
+            extern idtp
+            
+            idt_load:
+                lidt [idtp]
+                ret
+
     SECTION .bss
         resb 8192
     _sys_stack:
