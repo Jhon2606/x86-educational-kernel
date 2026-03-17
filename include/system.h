@@ -18,4 +18,13 @@ void gdt_install();
 extern void gdt_flush();
 void idt_install();
 void idt_set_gate(unsigned char num, unsigned long base, unsigned short sel, unsigned char flags);
+// define qual pilha estamos olhando depois de um ISR estar rodando
+struct regs
+{
+    unsigned int ds, es, fs, gs;
+    unsigned int edi, esi, ebp, esp, ebx, edx, ecx, eax;
+    unsigned int int_no, err_code;
+    unsigned int eip, cs, eflags, useresp, ss;
+};
+void isrs_install();
 #endif
