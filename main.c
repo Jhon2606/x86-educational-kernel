@@ -58,10 +58,11 @@ void outportb(unsigned short _port, unsigned char _data) {
 }
 
 void kmain(){
-    int myvar = 1;
     gdt_install();
     idt_install();
     isrs_install();
+    irq_install();
+    __asm__ __volatile__ ("sti");
     init_video();
     puts((unsigned char *)"Ola Mundo!\n");
     puts((unsigned char *)"Se voce esta vendo isso vc sabe o basico\n");
