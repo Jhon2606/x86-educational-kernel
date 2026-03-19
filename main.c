@@ -64,8 +64,9 @@ void kmain(){
     irq_install();
     __asm__ __volatile__ ("sti");
     init_video();
-    puts((unsigned char *)"Ola Mundo!\n");
-    puts((unsigned char *)"Se voce esta vendo isso vc sabe o basico\n");
-    puts((unsigned char *)"E tambem sabe que nao e trivial escrever em uma tela ;-;\n");
+    timer_install();
+    //puts((unsigned char *)"Ola Mundo!\n");
+    //puts((unsigned char *)"Se voce esta vendo isso vc sabe o basico\n");
+    //puts((unsigned char *)"E tambem sabe que nao e trivial escrever em uma tela ;-;\n");
     for(;;);
 }
