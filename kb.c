@@ -1,5 +1,4 @@
 #include <system.h>
-
 //minusculo
 unsigned char kbdus[128] = {
     0,  27, '1', '2', '3', '4', '5', '6', '7', '8',	
@@ -87,8 +86,13 @@ void keyboard_handler(struct regs *r) {
 		if (caps && c >= 'a' && c <= 'z') {
 			c = c - 32;
 		}
-		if (c)
-			putch(c);
+    if (c == '\b') {
+      backspace();
+    } else if (c == '\n') {
+      putch('\n');
+    } else if (c) {
+      putch(c);
+    }
 	}
 }
 //registrando handler no irq 1

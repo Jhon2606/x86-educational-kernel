@@ -1,4 +1,6 @@
 #include <system.h>
+extern int start_x;
+extern int start_y;
 
 //definindo ponteiro de texto, cores de fundo, atributos e coordenadas x e y
 unsigned short *textmemptr;
@@ -101,4 +103,39 @@ void settextcolor(unsigned char forecolor, unsigned char backcolor){
 void init_video(void){
     textmemptr = (unsigned short *)0xB8000;
     cls();
+}
+//extra do tutorial
+void backspace() {
+    unsigned short *video_memory = (unsigned short*)0xB8000;
+
+    // NÃO deixar apagar antes do limite
+    if (csr_y < start_y || (csr_y == start_y && csr_x <= start_x)) {
+        return;
+    }
+
+    if (csr_x == 0) {
+        if (csr_y > 0) {
+            csr_y--;
+
+            int x = 79;
+            while (x > 0) {
+                int index = csr_y * 80 + x;
+                char c = video_memory[index] & 0xFF;
+
+                if (c != ' ')
+                    break;
+
+                x--;
+            }
+
+            csr_x = x;
+        }
+    } else {
+        csr_x--;
+    }
+
+    int index = csr_y * 80 + csr_x;
+    video_memory[index] = (video_memory[index] & 0xFF00) | ' ';
+
+    move_csr();
 }

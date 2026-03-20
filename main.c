@@ -1,4 +1,8 @@
 #include <system.h>
+extern int csr_x;
+extern int csr_y;
+int start_x = 0;
+int start_y = 0;
 
 void __stack_chk_fail(void){
     //endereço é onde começa o modo texto em 32bits
@@ -66,9 +70,8 @@ void kmain(){
     init_video();
     timer_install();
     keyboard_install();
-    puts((unsigned char *)"Vamos testar esse trem:\n");
-    //puts((unsigned char *)"Ola Mundo!\n");
-    //puts((unsigned char *)"Se voce esta vendo isso vc sabe o basico\n");
-    //puts((unsigned char *)"E tambem sabe que nao e trivial escrever em uma tela ;-;\n");
+    puts((unsigned char *)"Meu Kernel v1.0\n");
+    start_x = csr_x;
+    start_y = csr_y;
     for(;;);
 }

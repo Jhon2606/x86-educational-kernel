@@ -35,4 +35,5 @@ void timer_install();
 void timer_wait(int ticks);
 void keyboard_handler(struct regs *r);
 void keyboard_install();
+void backspace();
 #endif
