@@ -37,7 +37,12 @@ gcc -Wall -O -fstrength-reduce -fomit-frame-pointer \
     -I./include -c -m32 -o timer.o timer.c
 echo timer pronto...
 
+gcc -Wall -O -fstrength-reduce -fomit-frame-pointer \
+    -finline-functions -nostdinc -fno-builtin -fno-pie \
+    -I./include -c -m32 -o kb.o kb.c
+echo kb pronto...
+
 echo Juntando Kernel...
 
-ld -m elf_i386 -T link.ld -o kernel.bin start.o main.o scrn.o gdt.o idt.o isrs.o irq.o timer.o
+ld -m elf_i386 -T link.ld -o kernel.bin start.o main.o scrn.o gdt.o idt.o isrs.o irq.o timer.o kb.o
 echo Feito!

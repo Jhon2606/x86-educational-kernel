@@ -65,6 +65,8 @@ void kmain(){
     __asm__ __volatile__ ("sti");
     init_video();
     timer_install();
+    keyboard_install();
+    puts((unsigned char *)"Vamos testar esse trem:\n");
     //puts((unsigned char *)"Ola Mundo!\n");
     //puts((unsigned char *)"Se voce esta vendo isso vc sabe o basico\n");
     //puts((unsigned char *)"E tambem sabe que nao e trivial escrever em uma tela ;-;\n");

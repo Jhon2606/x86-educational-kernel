@@ -13,9 +13,9 @@ void timer_phase(int hz){
 void timer_handler(struct regs *r){
     timer_ticks++;
 
-    if(timer_ticks % 100 == 0){
+    /*if(timer_ticks % 100 == 0){
         puts((unsigned char *)"\nUm segundo se passou...(certamente uma JoJo reference)\n");
-    }
+    }*/
 }
 //atribui o relógio do sistema instalando o temporizador no IRQ0
 void timer_install(){

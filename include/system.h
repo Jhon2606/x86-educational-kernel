@@ -33,4 +33,6 @@ void  irq_uninstall_handler(int irq);
 void timer_install();
 void timer_install();
 void timer_wait(int ticks);
+void keyboard_handler(struct regs *r);
+void keyboard_install();
 #endif
