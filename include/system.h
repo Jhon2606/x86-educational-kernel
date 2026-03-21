@@ -36,4 +36,6 @@ void timer_wait(int ticks);
 void keyboard_handler(struct regs *r);
 void keyboard_install();
 void backspace();
+void keyboard_set_leds(unsigned char leds);
+void update_keyboard_leds();
 #endif
