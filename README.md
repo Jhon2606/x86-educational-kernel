@@ -1,2 +1,2 @@
-# Kernel-Linux
-Seguindo um tutorial de criação de kernel com o objetivo de aprender mais sobre o seu funcionamento
+# x86-educational-kernel
+Este projeto implementa um kernel educacional em x86 desenvolvido do zero, com fins de aprendizado.
